@@ -1,61 +1,87 @@
-# n8n-criacao-de-canais-darks
+# 🎬 Sistema Criador de Vídeos Curtos 1.0 (n8n + Docker)
 
-🎬 Sistema Criador de Vídeos Curtos 1.0 (n8n + Docker)
-Este repositório contém um workflow do n8n que automatiza a criação de vídeos curtos narrados e legendados (TikTok, Reels, Shorts, etc).
+Este repositório contém um **workflow do n8n** que automatiza a criação de vídeos curtos narrados e legendados (TikTok, Reels, Shorts, etc).
 
-Ele integra LLMs (OpenAI/Groq), TTS, together.ai (imagens) e serviços auxiliares (Baserow, FFmpeg).
+Ele integra **LLMs (OpenAI/Groq)**, **TTS**, **together.ai (imagens)** e serviços auxiliares (**Baserow**, **FFmpeg**).
 
-⚙️ Funcionalidades
-Input do usuário via Form Trigger (título, duração, estilo, voz, provedor de imagens).
-Geração de roteiro viral com título, descrição, gancho, script e CTA.
-Conversão do roteiro em áudio narrado (TTS).
-Criação de legendas sincronizadas.
-Geração de imagens com together.ai (Flux Schnell).
-Montagem do vídeo final: cenas + narração + legendas.
-📂 Estrutura
-Sistema_Criador_De_V_deos_Curtos_de__Conte_do_.json → Workflow exportado do n8n.
-docker-compose.yml → Subida dos serviços auxiliares.
-README.md → Documentação do projeto.
-🚀 Como rodar com Docker Compose
-Clone o repositório
-git clone https://github.com/SEU_USUARIO/n8n-criador-videos.git
-cd n8n-criador-videos
-Crie o arquivo .env
-N8N_PORT=5678 N8N_BASIC_AUTH_ACTIVE=true N8N_BASIC_AUTH_USER=admin N8N_BASIC_AUTH_PASSWORD=senha123
+---
 
-Tokens de API
-OPENAI_API_KEY=sk-xxxxx GROQ_API_KEY=gsk-xxxxx TOGETHER_API_KEY=xxxxx
+## ⚙️ Funcionalidades
+- Input do usuário via **Form Trigger** (título, duração, estilo, voz, provedor de imagens).  
+- Geração de **roteiro viral** com título, descrição, gancho, script e CTA.  
+- Conversão do roteiro em **áudio narrado (TTS)**.  
+- Criação de **legendas sincronizadas**.  
+- Geração de **imagens com together.ai (Flux Schnell)**.  
+- Montagem do vídeo final: **cenas + narração + legendas**.
 
-Suba os containers
-docker compose up -d
+---
 
-Acesse o n8n
-URL: http://localhost:5678
+## 📂 Estrutura
+- `Sistema_Criador_De_V_deos_Curtos_de__Conte_do_.json` → Workflow exportado do n8n.  
+- `docker-compose.yml` → Subida dos serviços auxiliares.  
+- `README.md` → Documentação do projeto.  
 
-Login: conforme definido no .env
+---
 
-Importe o workflow
-Vá em Workflows → Import from File
+## 🚀 Como rodar com Docker Compose
 
-Selecione Sistema_Criador_De_V_deos_Curtos_de__Conte_do_.json
+1. **Clone o repositório**
+   ```bash
+   git clone https://github.com/SEU_USUARIO/n8n-criador-videos.git
+   cd n8n-criador-videos
 
-##🔒 Segurança
+2. Crie o arquivo .env
+
+  N8N_PORT=5678
+  N8N_BASIC_AUTH_ACTIVE=true
+  N8N_BASIC_AUTH_USER=admin
+  N8N_BASIC_AUTH_PASSWORD=senha123
+
+  # Tokens de API
+  OPENAI_API_KEY=sk-xxxxx
+  GROQ_API_KEY=gsk-xxxxx
+  TOGETHER_API_KEY=xxxxx
+
+3. Suba os containers
+
+  docker compose up -d
+
+
+4. Acesse o n8n
+
+  URL: http://localhost:5678
+
+  Login: conforme definido no .env
+
+5. Importe o workflow
+
+  Vá em Workflows → Import from File
+
+  Selecione Sistema_Criador_De_V_deos_Curtos_de__Conte_do_.json
+
+
+## 🔒 Segurança
 
 ⚠️ O JSON original contém tokens de API hardcoded.
 
-Recomenda-se remover antes de publicar em repositórios públicos.
+  Recomenda-se remover antes de publicar em repositórios públicos.
 
-Prefira usar variáveis de ambiente no .env.
+  Prefira usar variáveis de ambiente no .env.
 
-##✨ Próximos Passos
+## ✨ Próximos Passos
 
-Criar versão que usa apenas APIs cloud (sem dependências locais).
+  Criar versão que usa apenas APIs cloud (sem dependências locais).
 
-Integrar upload automático em YouTube / TikTok API.
+  Integrar upload automático em YouTube / TikTok API.
 
-Adicionar pipeline de CI/CD para importar/exportar workflows do n8n automaticamente.
+  Adicionar pipeline de CI/CD para importar/exportar workflows do n8n automaticamente.
 
-📌 docker-compose.yml
+
+---
+
+## 📌 docker-compose.yml
+
+```yaml
 version: "3.9"
 services:
   n8n:
@@ -87,3 +113,19 @@ services:
     image: linuxserver/ffmpeg
     container_name: ffmpeg
     restart: unless-stopped
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
